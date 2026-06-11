@@ -7,14 +7,12 @@
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>fappachino</title>
 </head>
 
 <body>
   <div id="app">
-    <!-- <div class="noise"></div> -->
 
     <header>
       <div class="logo">FAPPACHINO</div>
@@ -70,6 +68,7 @@
 
       <div class="btn-row">
         <button class="btn btn-accent" id="btn-start">START</button>
+        <button class="btn btn-icon" id="btn-backdate">📅 SET DATE</button>
         <button class="btn btn-ghost" id="btn-reset">RESET</button>
       </div>
 
@@ -100,12 +99,15 @@
         <h2>HISTORY</h2>
         <p class="sub">DO NOT REDEEM THE CARD</p>
       </div>
+      <div class="history-actions">
+        <button class="btn btn-icon" id="btn-export">⬇ EXPORT</button>
+        <button class="btn btn-icon" id="btn-import">⬆ IMPORT</button>
+      </div>
       <div class="history-list" id="history-list">
         <div class="empty-state">No history yet.<br />Start your first streak.</div>
       </div>
       <button class="btn btn-ghost btn-full" id="btn-clear-history">CLEAR HISTORY</button>
     </section>
-
 
     <div id="pwa-toast">
       <button id="pwa-close">close</button>
@@ -115,6 +117,40 @@
       </div>
     </div>
   </div>
+
+  <!-- BACKDATE MODAL -->
+  <div class="modal-overlay hidden" id="modal-backdate">
+    <div class="modal">
+      <h3>SET START DATE</h3>
+      <div class="modal-field">
+        <label>WHEN DID YOU ACTUALLY START?</label>
+        <input type="datetime-local" id="backdate-input" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="modal-cancel">CANCEL</button>
+        <button class="btn btn-accent" id="modal-confirm">CONFIRM</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORT MODAL -->
+  <div class="modal-overlay hidden" id="modal-import">
+    <div class="modal">
+      <h3>IMPORT DATA</h3>
+      <div class="modal-field">
+        <label>PASTE JSON EXPORT BELOW</label>
+        <textarea class="import-area" id="import-textarea" placeholder='{"state":{"startTime":...},"history":[]}'></textarea>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="import-cancel">CANCEL</button>
+        <button class="btn btn-accent" id="import-confirm">IMPORT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- APP TOAST -->
+  <div class="app-toast" id="app-toast"></div>
+
   <script type="module" src="/src/main.ts"></script>
 </body>
 

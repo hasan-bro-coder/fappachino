@@ -43,7 +43,7 @@ export default defineConfig({
       //     }, networkTimeoutSeconds: 10// Optional: Fallback to cache if network is slow
       //   }
       // }],
-      globPatterns: ['**/*.{js,css,html,png,ico}'],
+      globPatterns: ['**/*.{ts,js,css,html,png,ico}'],
       cleanupOutdatedCaches: true,
       clientsClaim: true,
     },
